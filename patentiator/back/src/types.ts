@@ -95,22 +95,3 @@ export type EntryType = "Hospital" | "OccupationalHealthcare" | "HealthCheck";
 export type NonSensitivePatient = Omit<Patient, 'ssn' | 'entries'>;
 
 export type NewPatientEntry = Omit<Patient, 'id'>;
-/*
-export interface NewEntry {
-  type: string;
-  description: string;
-  date: string;
-  specialist: string;
-  discharge?: {
-    date: string;
-    criteria: string;
-  };
-  employerName?: string;
-  sickLeave?: {
-    startDate: string;
-    endDate: string;
-  };
-  healthCheckRating?: HealthCheckRating;
-  // Add other fields as needed
-}
-*/
