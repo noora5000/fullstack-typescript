@@ -30,7 +30,7 @@ const PatientByIdPage = ({ diagnoses } : Props) => {
 
   useEffect(()=> {
     if(!id){
-      throw new Error('Something went wrong- cant fetch id.');
+      throw new Error(`Something went wrong - can't fetch id.`);
     }
     const fetchPatientById = async () => {
       try {
@@ -71,42 +71,48 @@ const PatientByIdPage = ({ diagnoses } : Props) => {
 
   const FindDiagnoses: React.FC<{ entry: Entry }> = ({ entry }) => (
     <>
-        <div key={entry.id}>
-          {entry.diagnosisCodes?.map((item, index) => {
-            const foundDiagnosis = diagnoses.find((diag) => diag.code === item);
-            return (
-              <li key={index}>
-                {foundDiagnosis?.code} {foundDiagnosis?.name}
-              </li>
-            );
-          })}
-        </div>
+      <div key={entry.id}>
+        {entry.diagnosisCodes?.map((item, index) => {
+          const foundDiagnosis = diagnoses.find((diag) => diag.code === item);
+          return (
+            <li key={index}>
+              {foundDiagnosis?.code} {foundDiagnosis?.name}
+            </li>
+          );
+        })}
+      </div>
     </>
   );
 
   const EntryDetails: React.FC<{ entry: Entry }> = ({ entry }) => {
     switch (entry.type) {
       case "Hospital":
-        return <div>
+        return (
+          <div>
             <p>{entry.date} {entry.type}</p>
             <p style={{ 'fontStyle': 'italic' }}>{entry.description}</p>
             <p>Discharge: {entry.discharge.date}: {entry.discharge.criteria}</p>
-          </div>;
+          </div>
+        );
       case "OccupationalHealthcare":
-        return <div>
+        return (
+          <div>
             <p>{entry.date} {entry.type}. Employer: {entry.employerName}</p>
             <p style={{ 'fontStyle': 'italic' }}>{entry.description}</p>
             {!entry.sickLeave ? null : <p>Sick leave: {entry.sickLeave?.startDate} — {entry.sickLeave?.endDate}</p>}
-          </div>;
+          </div>
+        );
       case "HealthCheck":
-        return <div>
+        return (
+          <div>
           <p>{entry.date} {entry.type}</p>
           <p style={{ 'fontStyle': 'italic' }}>{entry.description}</p>
           {entry.healthCheckRating === 0 ?
             <FavoriteIcon style={{ 'color': 'green' }}/> : entry.healthCheckRating === 1 ?
             <FavoriteIcon style={{ 'color': 'yellow' }}/> : <FavoriteIcon style={{ 'color': 'red' }}/>
           }
-        </div>;
+          </div>
+        );
       default:
         return assertNever(entry);
     }

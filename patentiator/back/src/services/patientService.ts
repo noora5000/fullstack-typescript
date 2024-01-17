@@ -11,6 +11,7 @@ const getNonSensitivePatients = (): NonSensitivePatient[] => {
     occupation
   }));
 };
+
 const getPatientById = (findId: string): Patient => {
   const patientById = patientData.find((patient) => patient.id === findId);
   if(!patientById) {

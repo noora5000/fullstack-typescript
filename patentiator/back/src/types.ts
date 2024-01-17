@@ -33,10 +33,12 @@ interface HealthCheckEntry extends BaseEntry {
   type: "HealthCheck";
   healthCheckRating: HealthCheckRating;
 }
+
 interface HospitalEntry extends BaseEntry {
   type: "Hospital";
   discharge: Discharge;
 }
+
 interface OccupationalHealthcareEntry extends BaseEntry {
   type: "OccupationalHealthcare";
   employerName: string;
@@ -48,21 +50,23 @@ export type Entry =
   | OccupationalHealthcareEntry
   | HealthCheckEntry;
 
-
 export interface NewBaseEntry {
   description: string;
   date: string;
   specialist: string;
   diagnosisCodes?: Array<Diagnosis['code']>;
 }
+
 interface NewHealthCheckEntry extends NewBaseEntry {
   type: "HealthCheck";
   healthCheckRating: HealthCheckRating;
 }
+
 interface NewHospitalEntry extends NewBaseEntry {
   type: "Hospital";
   discharge: Discharge;
 }
+
 interface NewOccupationalHealthcareEntry extends NewBaseEntry {
   type: "OccupationalHealthcare";
   employerName: string;

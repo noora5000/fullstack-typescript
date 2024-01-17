@@ -1,17 +1,14 @@
 import React from 'react';
-
 import {  TextField,
 FormControl,
 FormControlLabel,
 FormLabel,
 Radio,
 RadioGroup} from '@mui/material';
-
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import 'dayjs/locale/en-gb';
 import dayjs from 'dayjs';
-
 import { Discharge, HealthCheckRating, SickLeave } from "../../types";
 
 export const HospitalField = ({discharge, setDischarge}: {discharge: Discharge, setDischarge:React.Dispatch<React.SetStateAction<Discharge>>}) => {
@@ -61,6 +58,7 @@ export const HealthCheckField = ({
   </div> 
   );
 };
+
 export const OccupationalHealthcareField = ({
     employerName, 
     setEmployerName, 
@@ -71,21 +69,21 @@ export const OccupationalHealthcareField = ({
     sickLeave: SickLeave, 
     setSickLeave:React.Dispatch<React.SetStateAction<SickLeave>>}) => {
   return(
-<div>
-  <TextField
-    label="Employer name"
-    fullWidth
-    value={employerName}
-    onChange={({ target }) => setEmployerName(target.value)}
-  />
-  <p style={{'fontFamily': '"Roboto","Helvetica","Arial",sans-serif', 'marginBottom': '0px'}}>Sick Leave:</p>
-  <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
-    <DatePicker label="Sick leave start date" value={sickLeave.startDate === '' ? null : sickLeave.startDate} onChange={(date) => setSickLeave({...sickLeave, startDate: dayjs(date).format('YYYY-MM-DD')})}/>
-  </LocalizationProvider> 
-  <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
-    <DatePicker label="Sick leave end date" value={sickLeave.endDate === '' ? null : sickLeave.endDate} onChange={(date) => setSickLeave({...sickLeave, endDate: dayjs(date).format('YYYY-MM-DD')})}/>
-  </LocalizationProvider> 
-  </div> 
+    <div>
+      <TextField
+        label="Employer name"
+        fullWidth
+        value={employerName}
+        onChange={({ target }) => setEmployerName(target.value)}
+      />
+      <p style={{'fontFamily': '"Roboto","Helvetica","Arial",sans-serif', 'marginBottom': '0px'}}>Sick Leave:</p>
+      <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
+        <DatePicker label="Sick leave start date" value={sickLeave.startDate === '' ? null : sickLeave.startDate} onChange={(date) => setSickLeave({...sickLeave, startDate: dayjs(date).format('YYYY-MM-DD')})}/>
+      </LocalizationProvider> 
+      <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
+        <DatePicker label="Sick leave end date" value={sickLeave.endDate === '' ? null : sickLeave.endDate} onChange={(date) => setSickLeave({...sickLeave, endDate: dayjs(date).format('YYYY-MM-DD')})}/>
+      </LocalizationProvider> 
+    </div> 
   );
 };
 

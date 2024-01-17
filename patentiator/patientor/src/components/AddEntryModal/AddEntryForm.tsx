@@ -31,6 +31,7 @@ const AddEntryForm = ({ onCancel, onSubmit }: Props) => {
         console.log('Error fetching diagnosis codes.');
       }
     };
+
     fetchDiagnosisCodes();
   }, []);
   
@@ -52,15 +53,12 @@ const AddEntryForm = ({ onCancel, onSubmit }: Props) => {
       entryValues = { ...baseEntryValues, type, healthCheckRating };
     } else if (type === 'OccupationalHealthcare') {
       entryValues = { ...baseEntryValues, type, employerName };
-      
-  
       if (sickLeave.startDate !== '' || sickLeave.endDate !== '') {
         entryValues.sickLeave = sickLeave;
       }
     } else {
       throw new Error(`Invalid entry type: ${type}`);
     }
-  
     onSubmit(entryValues);
   };
 
@@ -79,10 +77,8 @@ const AddEntryForm = ({ onCancel, onSubmit }: Props) => {
           employerName={employerName} setEmployerName={setEmployerName} 
           sickLeave={sickLeave} setSickLeave={setSickLeave}
         />}
-
         <DiagnosisCodesField allDiagnosisCodes={allDiagnosisCodes} setDiagnosisCodes={setDiagnosisCodes}/>
         <FormControlPanel onCancel={onCancel}/>
-        
       </form>
     </div>
   );
