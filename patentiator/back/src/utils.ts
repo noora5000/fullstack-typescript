@@ -116,7 +116,6 @@ const isDischarge = (object: unknown): object is Discharge => {
   return isString(date) && isDate(date) && isString(criteria) && date !== '' && criteria !== '';
 };
 
-
 // Parsing:
 const validateString = (value: unknown, fieldName: string): string => {
   if(!isString(value) || value == '') {
@@ -138,8 +137,6 @@ const parseDate = (date: unknown): string => {
   }
   return date;
 };
-
-
   
 const parseGender = (gender: unknown): Gender => {
   if (!isString(gender) || !isGender(gender)) {
@@ -147,7 +144,6 @@ const parseGender = (gender: unknown): Gender => {
   }
   return gender;
 };
-
 
 const parseDiagnosisCodes = (object: unknown): Array<Diagnosis['code']> =>  {
   if (!object || typeof object !== 'object' || !('diagnosisCodes' in object)) {
@@ -182,7 +178,6 @@ const parseSickLeave = (object: unknown): SickLeave | null => {
 
   return { startDate, endDate };
 };
-
 
 const parseHealthCheckRating = (object: unknown):HealthCheckRating => {
   if (!isNumber(object) || !isHealthCheckRating(object)) {
